@@ -17,20 +17,29 @@
 
         <section class="section pt-5"> 
             <div class="columns">
-                <div class="column">
+                <div class="column is-one-quarter">
+                    <div class="my-2 py-2">
+                        <img src="./assets/photos/image.png" alt="expense planner"/>
+                        </div>
                     <div class="container">
-                        <button class="button is-medium is-fullwidth is-info" id="Log">Log Expense Here!</h3>
+                        <button class="button is-medium is-fullwidth is-info" id="Log">Add expense +</h3>
                     </div>
                 </div>
 
                 <div class="column">
                     <div class="container">
                         <h3 class="title has-text-centered">Logged Expenses:</h3>
-                        <!-- 
-                        How do we want to display that information? 
-                        We should change the <p> to some sort of button with an input
-                        -->
-
+                        <table class="table is-bordered is-fullwidth">
+                            <thead>
+                                <tr class="is-warning">
+                                    <th class="has-text-black">Date</th>
+                                    <th class="has-text-black">Description</th>
+                                    <th class="has-text-black">Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expense-table">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
