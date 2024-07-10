@@ -26,6 +26,17 @@
                 <div class="column">
                     <div class="container">
                         <h3 class="title has-text-centered">Logged Expenses:</h3>
+                        <table class="table is-bordered is-fullwidth">
+                            <thead>
+                                <tr class="is-warning">
+                                    <th class="has-text-black">Date</th>
+                                    <th class="has-text-black">Description</th>
+                                    <th class="has-text-black">Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expense-table">
+                            </tbody>
+                        </table>
                         <!-- 
                         How do we want to display that information? 
                         We should change the <p> to some sort of button with an input
