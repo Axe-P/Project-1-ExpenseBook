@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalbg = document.querySelector('.modal-background')
     const modal = document.querySelector('.modal')
 
+    const expenses = [];
+
     //event listeners to open/close the modal
     logh.addEventListener('click', () => {
         modal.classList.add('is-active');
@@ -26,9 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: description,
                 cost: cost
             };
+            expenses.push(expenseData)
             console.log(expenseData);
             // Convert the expense data to a JSON string
-            var expenseDataJson = JSON.stringify(expenseData);
+            var expenseDataJson = JSON.stringify(expenses);
 
             // Save the JSON string to local storage
             localStorage.setItem('expenseData', expenseDataJson);
