@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
         expenses = JSON.parse(localStorage.getItem('expenseData'));
     }
 
+    const expenses = [];
+
     //event listeners to open/close the modal
     logh.addEventListener('click', () => {
         modal.classList.add('is-active');
@@ -36,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             expenses.push(expenseData)
             console.log(expenseData);
-    
+
             // Save the JSON string to local storage
             localStorage.setItem('expenseData', JSON.stringify(expenses));
 
