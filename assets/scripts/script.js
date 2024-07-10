@@ -23,12 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
             var cost = document.getElementById('costInput').value;
 
             // Create an object with the expense data
+            cost = parseFloat(cost);
             var expenseData = {
                 date: date,
                 description: description,
                 cost: cost
             };
-            expenses.push(expenseData)
+            expenses.push(expenseData);
+
             console.log(expenseData);
             // Convert the expense data to a JSON string
             var expenseDataJson = JSON.stringify(expenses);
@@ -41,3 +43,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+//generating the grand total of expenses
+const displayTotalExpense = function (expenses) {
+    // TODO: Calculate and display the average salary
+    let sum = 0
+  
+    //Calculates the sum of salaries located in employeesArray
+    expenses.forEach(expenseData => {
+      sum += expenseData.cost;
+    });
+
+    const totalExpenseDisplay = document.getElementById("totalExpenseDisplay");
+
+    totalExpenseDisplay.textContent = 'Your Total Expense is: $${sum}';
+};
+displayTotalExpense(expenses);
