@@ -31,16 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
             var cost = document.getElementById('costInput').value;
 
             // Create an object with the expense data
+            cost = parseFloat(cost);
             var expenseData = {
                 date: date,
                 description: description,
                 cost: cost
             };
-            expenses.push(expenseData)
+            expenses.push(expenseData);
+
             console.log(expenseData);
 
             // Save the JSON string to local storage
             localStorage.setItem('expenseData', JSON.stringify(expenses));
+
+            displayTotalExpense(expenses);
 
             // Close the modal
             modal.classList.remove('is-active');
@@ -48,6 +52,25 @@ document.addEventListener('DOMContentLoaded', function() {
             generateTableRows();
         }
     });
+});
+
+//generating the grand total of expenses
+const displayTotalExpense = function (expenses) {
+    // TODO: Calculate and display the average salary
+    let sum = 0
+  
+    //Calculates the sum of salaries located in employeesArray
+    expenses.forEach(expenseData => {
+      sum += expenseData.cost;
+    });
+
+    const totalExpenseDisplay = document.getElementById("totalExpenseDisplay");
+
+    const totalExpense = sum.toFixed(2);
+
+    totalExpenseDisplay.textContent = 'Your Total Expense is: $' + totalExpense;
+};
+
 
 
     // Function to generate HTML table rows
@@ -65,3 +88,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     generateTableRows();
 });
+
