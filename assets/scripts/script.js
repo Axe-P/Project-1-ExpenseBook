@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Save the JSON string to local storage
             localStorage.setItem('expenseData', JSON.stringify(expenses));
 
-            displayTotalExpense(expenses);
+            displayTotalExpense();
 
             // Close the modal
             modal.classList.remove('is-active');
@@ -66,7 +66,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //generating the grand total of expenses
-const displayTotalExpense = function (expenses) {
+const displayTotalExpense = function () {
+    //Retrieving expenses from Local Storage
+    const expenses = JSON.parse(localStorage.getItem('expenseData')) || []
+
     // TODO: Calculate and display the average salary
     let sum = 0
   
@@ -82,3 +85,4 @@ const displayTotalExpense = function (expenses) {
     totalExpenseDisplay.textContent = 'Your Total Expense is: $' + totalExpense;
 };
 
+displayTotalExpense();
