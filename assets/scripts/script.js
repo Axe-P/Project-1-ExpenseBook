@@ -4,14 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.querySelector('.modal');
     const tableBody = document.querySelector('#expense-table');
 
-    let expenses = [];
+    const expenses = [];
 
     // check local storage for existing data
     if (localStorage.getItem('expenseData')) {
         expenses = JSON.parse(localStorage.getItem('expenseData'));
     }
-
-    const expenses = [];
 
     //event listeners to open/close the modal
     logh.addEventListener('click', () => {
@@ -85,7 +83,6 @@ const displayTotalExpense = function (expenses) {
             `;
             tableBody.appendChild(row);
         });
-    }
+    };
+    
     generateTableRows();
-});
-
