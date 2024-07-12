@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Save the JSON string to local storage
             localStorage.setItem('expenseData', expenseDataJson);
 
+            displayTotalExpense(expenses);
+
             // Close the modal
             modal.classList.remove('is-active');
         }
@@ -56,6 +58,7 @@ const displayTotalExpense = function (expenses) {
 
     const totalExpenseDisplay = document.getElementById("totalExpenseDisplay");
 
-    totalExpenseDisplay.textContent = 'Your Total Expense is: $${sum}';
+    const totalExpense = sum.toFixed(2);
+
+    totalExpenseDisplay.textContent = 'Your Total Expense is: $' + totalExpense;
 };
-displayTotalExpense(expenses);
