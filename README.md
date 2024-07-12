@@ -24,3 +24,4 @@ The Expense Calculator is a user-friendly web application that allows users to l
 2. Log your expenses using the provided input fields.
 3. View your logged expenses in the table format.
 
+![Deployed Page](<assets/photos/Expense Book.png>)
