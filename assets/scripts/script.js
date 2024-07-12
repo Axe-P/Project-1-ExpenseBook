@@ -9,10 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // check local storage for existing data
     if (localStorage.getItem('expenseData')) {
         expenses = JSON.parse(localStorage.getItem('expenseData'));
-    }
-
-    const expenses = [];
-
+    }   
     //event listeners to open/close the modal
     logh.addEventListener('click', () => {
         modal.classList.add('is-active');
@@ -52,6 +49,20 @@ document.addEventListener('DOMContentLoaded', function() {
             generateTableRows();
         }
     });
+    // Function to generate HTML table rows
+    function generateTableRows() {
+        tableBody.innerHTML = ''; // Clear existing table rows
+        expenses.forEach(expense => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${expense.date}</td>
+                <td>${expense.description}</td>
+                <td>${expense.cost}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+    generateTableRows();
 });
 
 //generating the grand total of expenses
@@ -70,22 +81,4 @@ const displayTotalExpense = function (expenses) {
 
     totalExpenseDisplay.textContent = 'Your Total Expense is: $' + totalExpense;
 };
-
-
-
-    // Function to generate HTML table rows
-    function generateTableRows() {
-        tableBody.innerHTML = ''; // Clear existing table rows
-        expenses.forEach(expense => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${expense.date}</td>
-                <td>${expense.description}</td>
-                <td>${expense.cost}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-    }
-    generateTableRows();
-});
 
