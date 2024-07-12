@@ -1,7 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const logh = document.querySelector('#Log')
-    const modalbg = document.querySelector('.modal-background')
-    const modal = document.querySelector('.modal')
+    const logh = document.querySelector('#Log');
+    const modalbg = document.querySelector('.modal-background');
+    const modal = document.querySelector('.modal');
+    const tableBody = document.querySelector('#expense-table');
+
+    let expenses = [];
+
+    // check local storage for existing data
+    if (localStorage.getItem('expenseData')) {
+        expenses = JSON.parse(localStorage.getItem('expenseData'));
+    }
 
     const expenses = [];
 
@@ -30,14 +38,30 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             expenses.push(expenseData)
             console.log(expenseData);
-            // Convert the expense data to a JSON string
-            var expenseDataJson = JSON.stringify(expenses);
 
             // Save the JSON string to local storage
-            localStorage.setItem('expenseData', expenseDataJson);
+            localStorage.setItem('expenseData', JSON.stringify(expenses));
 
             // Close the modal
             modal.classList.remove('is-active');
+
+            generateTableRows();
         }
     });
+
+
+    // Function to generate HTML table rows
+    function generateTableRows() {
+        tableBody.innerHTML = ''; // Clear existing table rows
+        expenses.forEach(expense => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${expense.date}</td>
+                <td>${expense.description}</td>
+                <td>${expense.cost}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+    generateTableRows();
 });
